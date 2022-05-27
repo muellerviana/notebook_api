@@ -5,6 +5,10 @@ class Contact < ApplicationRecord
     end
 
     def as_json(options={})
-        super(methods: :author, root: true)
+      super(
+        root: true,
+        methods: :author, 
+        include: {kind: {only: :description}}
+      )
     end
 end
